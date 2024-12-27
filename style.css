@@ -7,15 +7,42 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
+    background-color: #111;
+    color: white;
+    overflow-x: hidden;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+/* Background Container for Star Effect */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #111;
+    z-index: -1;
+}
+
+#stars:after {
+    content: "";
+    background: url("https://cdn.pixabay.com/photo/2017/08/30/01/45/galaxy-2695561_960_720.jpg") repeat;
+    background-size: 20px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: moveStars 100s linear infinite;
 }
 
 /* Navigation Bar */
 nav {
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -34,7 +61,7 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     padding: 10px 15px;
     transition: all 0.3s ease;
 }
@@ -79,7 +106,7 @@ nav ul li a:hover {
 /* About Me Section */
 #about {
     padding: 50px 0;
-    background-color: #fff;
+    background-color: #111;
     text-align: center;
 }
 
@@ -96,42 +123,79 @@ nav ul li a:hover {
 }
 
 /* Project Slider Section */
+/* Project Slider Section */
 #projects {
     padding: 50px 0;
-    background-color: #fff;
+    background-color: #111;
     text-align: center;
 }
 
 #projects h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
+    color: #4CAF50; /* Green heading */
 }
 
+/* Project Slider Container */
+/* Project Slider Section */
+#projects {
+    padding: 50px 0;
+    background-color: #111;
+    text-align: center;
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #4CAF50; /* Green heading */
+}
+
+/* Project Slider Container */
+/* Project Slider Section */
+/* Project Slider Section */
+#projects {
+    padding: 50px 0;
+    background-color: #111;
+    text-align: center;
+    position: relative; /* Ensure buttons are positioned relative to this section */
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #4CAF50; /* Green heading */
+}
+
+/* Project Slider Container */
 .project-slider {
     display: flex;
     overflow: hidden;
-    justify-content: center;
-    gap: 30px;
-    transition: transform 0.5s ease;
+    justify-content: flex-start;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 8px;
 }
 
+/* Each slide */
 .project-slide {
-    min-width: 300px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 0 auto;
+    width: 33.33%; /* Show 3 items at a time */
+    background-color: #222;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s ease;
+    overflow: hidden; /* Ensures image stays inside the container */
 }
 
 .project-slide img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 10%; /* Make the image width 100% of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Ensures the image covers the container space without distortion */
+    border-radius: 8px; /* Optional: if you want rounded corners on the image */
+    margin-bottom: 15px; /* Optional: adds space between image and text */
 }
-
 .project-info h3 {
     font-size: 1.5rem;
     color: #4CAF50;
@@ -156,6 +220,7 @@ nav ul li a:hover {
     background-color: #45a049;
 }
 
+/* Buttons for navigation */
 button {
     background-color: #4CAF50;
     color: white;
@@ -165,23 +230,60 @@ button {
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
+    position: absolute;
+    z-index: 10;
+    top: auto; /* Ensure buttons are at the bottom */
+    bottom: 10px; /* Position at the bottom */
+    margin-top: 10px;
+    padding: 15px 25px;
 }
 
 button:hover {
     background-color: #388e3c;
 }
 
+/* Positioning the Prev/Next buttons */
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .project-slider {
+        width: 100%;
+    }
+
+    .project-slide {
+        width: 80%; /* Adjust for smaller screens */
+    }
+}
+
+
+
+/* Contact Section */
 /* Contact Section */
 #contact {
     padding: 50px 0;
-    background-color: #f4f4f9;
+    background: linear-gradient(to right, #333, #111); /* Dark gradient background */
+    color: white;
     text-align: center;
+    border-top: 2px solid #4CAF50; /* Add a subtle border at the top */
 }
 
 #contact h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #4CAF50; /* Make the header stand out */
+}
+
+#contact p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 #contact ul {
@@ -192,16 +294,37 @@ button:hover {
 #contact ul li {
     font-size: 1.2rem;
     margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #444; /* Subtle bottom border for each item */
 }
 
 #contact ul li a {
     color: #4CAF50;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 #contact ul li a:hover {
-    text-decoration: underline;
+    color: #fff; /* Change the color on hover for better visibility */
 }
+
+/* Button Styling for Contact Section */
+#contact .btn-contact {
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+#contact .btn-contact:hover {
+    background-color: #388e3c; /* Darker green on hover */
+    cursor: pointer;
+}
+
 
 /* Footer Section */
 footer {
@@ -215,21 +338,36 @@ footer p {
     font-size: 1rem;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-    }
+/* Mouse Effect */
+#stars {
+    pointer-events: none;
+}
 
-    .profile-img {
-        margin-bottom: 20px;
+/* Animation for stars in background */
+@keyframes moveStars {
+    0% {
+        background-position: 0 0;
     }
-
-    .project-slider {
-        flex-direction: column;
+    100% {
+        background-position: 1000px 1000px;
     }
+}
 
-    .project-slide {
-        margin-bottom: 20px;
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: moveParticle 0.5s ease-out;
+}
+
+@keyframes moveParticle {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
     }
 }
