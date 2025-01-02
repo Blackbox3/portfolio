@@ -56,3 +56,8 @@ setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
 showSlide(currentSlide);
 
 
+// For the Hamburger Menu Toggle
+document.querySelector('.hamburger').addEventListener('click', function() {
+    const navList = document.querySelector('nav ul');
+    navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+});
